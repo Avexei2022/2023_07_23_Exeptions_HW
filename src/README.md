@@ -28,11 +28,9 @@
       int d = 0;  
       double catchedRes1 = intArray[8] / d;  
       System.out.println("catchedRes1 = " + catchedRes1);  
-  } catch (ArithmeticException e) {  
+  } catch (ArithmeticException | NullPointerException | IndexOutOfBoundsException e) {  
       System.out.println("Catching exception: " + e);  
-  } catch (NullPointerException e) {  
-      System.out.println("Catching exception: " + e);  
-  }
+  } 
 
 
   3. Дан следующий код, исправьте его там, где требуется  
