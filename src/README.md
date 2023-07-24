@@ -33,58 +33,58 @@
   } 
 
 
-  3. Дан следующий код, исправьте его там, где требуется  
+3. Дан следующий код, исправьте его там, где требуется  
   
-     public static void main(String[] args) throws Exception {  
-        try {  
-            int a = 90;  
-            int b = 3;  
-            System.out.println(a / b);  
-            printSum(23, 234);  
-            int[] abc = { 1, 2 };  
-            abc[3] = 9;  
-        } catch (Throwable ex) {  
-            System.out.println("Что-то пошло не так...");  
-        } catch (NullPointerException ex) {  
-            System.out.println("Указатель не может указывать на null!");  
-        } catch (IndexOutOfBoundsException ex) {  
-            System.out.println("Массив выходит за пределы своего размера!");  
-        }  
-     }  
-     public static void printSum(Integer a, Integer b) throws FileNotFoundException {  
-        System.out.println(a + b);  
-     }  
+   public static void main(String[] args) throws Exception {  
+      try {  
+          int a = 90;  
+          int b = 3;  
+          System.out.println(a / b);  
+          printSum(23, 234);  
+          int[] abc = { 1, 2 };  
+          abc[3] = 9;  
+      } catch (Throwable ex) {  
+          System.out.println("Что-то пошло не так...");  
+      } catch (NullPointerException ex) {  
+          System.out.println("Указатель не может указывать на null!");  
+      } catch (IndexOutOfBoundsException ex) {  
+          System.out.println("Массив выходит за пределы своего размера!");  
+      }  
+   }  
+   public static void printSum(Integer a, Integer b) throws FileNotFoundException {  
+      System.out.println(a + b);  
+   }  
 
 
 Исправления:  
 - в методе main:  
   - убрать throws Exception - выше некуда пробрасывть исключение;  
   - дополнить исключением ArithmeticException - в метоле есть деление;
-  - исключение Throwable поставить в самую последнюю очередь;
-    - в методе printSum FileNotFoundException заменить на NullPointerException - метод
-      не работает с файлами, но аргумент null вполне может получить ;  
+  - исключение Throwable поставить в самую последнюю очередь и заменить на Exception;
+- в методе printSum FileNotFoundException заменить на NullPointerException - метод
+  не работает с файлами, но аргумент null вполне может получить ;  
   
-      public static void main(String[] args){  
-          try {  
-              int a = 90;  
-              int b = 3;  
-              System.out.println(a / b);  
-              printSum(23, 234);  
-              int[] abc = { 1, 2 };  
-              abc[3] = 9;  
-          } catch (ArithmeticException ex) {  
-              System.out.println("Деление на ноль!");  
-          } catch (NullPointerException ex) {  
-              System.out.println("Указатель не может указывать на null!");  
-          } catch (IndexOutOfBoundsException ex) {  
-              System.out.println("Индекс выходит за пределы массива!");  
-          } catch (Throwable ex) {  
-              System.out.println("Что-то пошло не так...");  
-          }  
+  public static void main(String[] args){  
+      try {  
+          int a = 90;  
+          int b = 3;  
+          System.out.println(a / b);  
+          printSum(23, 234);  
+          int[] abc = { 1, 2 };  
+          abc[3] = 9;  
+      } catch (ArithmeticException ex) {  
+          System.out.println("Деление на ноль!");  
+      } catch (NullPointerException ex) {  
+          System.out.println("Указатель не может указывать на null!");  
+      } catch (IndexOutOfBoundsException ex) {  
+          System.out.println("Индекс выходит за пределы массива!");  
+      } catch (Exception ex) {  
+          System.out.println("Что-то пошло не так...");  
+      }  
     
-      public static void printSum(Integer a, Integer b) throws NullPointerException {  
-          System.out.println(a + b);  
-      }
+  public static void printSum(Integer a, Integer b) throws NullPointerException {  
+      System.out.println(a + b);  
+  }
 
 4. Разработайте программу, которая выбросит 
 Exception, когда пользователь вводит пустую строку.
